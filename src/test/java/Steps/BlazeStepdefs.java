@@ -1,5 +1,6 @@
 package Steps;
 
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -8,7 +9,6 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class BlazeStepdefs {
 
         Thread.sleep(5000);
         driver.findElement(By.xpath("//*[@id='sign-username']")).
-                sendKeys("Judith12z");
+                sendKeys("Judith12v");
 
         driver.findElement(By.xpath("//*[@id='sign-password']")).
                 sendKeys("pass1234");
@@ -50,7 +50,7 @@ public class BlazeStepdefs {
                 .click();
 
         Thread.sleep(3000);
-     driver.switchTo().alert().accept();
+        driver.switchTo().alert().accept();
 
 
      System.out.println("----------------User Signed Up ---------------");
@@ -123,6 +123,7 @@ public class BlazeStepdefs {
         System.out.println("----------------Prayment Successful ---------------");
 
 
+        driver.close();
        /* Thread.sleep(3000);
         driver.switchTo().alert().accept();
 
@@ -134,5 +135,11 @@ public class BlazeStepdefs {
 
 
 
+    }
+
+    @After
+    public void Logout(){
+        driver.close();
+        System.out.println("----------------Logout ---------------");
     }
 }
